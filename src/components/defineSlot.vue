@@ -3,7 +3,6 @@
     <h2>
         <slot msg="'12312'"></slot>
     </h2>
-    <p name="slotValue"></p>
 </template>
 
 <script lang="ts" setup>

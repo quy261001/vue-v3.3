@@ -2,16 +2,27 @@
 <template>
   <h1>Vue 3.3</h1>
   <div class="main">
-      <!-- <GenericCompVue :items ="['2', '3', '4', 5]" :selected = "123" :extraProp="123"/>
-      <defineEmit @foo = "clickFoo" @bar = "clickBar" @count = "clickCount"/>
-      <defineSlot>123213</defineSlot> -->
+      <!-- <GenericCompVue :items ="['123', 2, 3, 5]" :selected = "'123'" :extraProp="123"/> -->
+      <!-- <defineEmit :countValue="countValue"  @foo = "clickFoo" @bar = "clickBar" @count = "clickCount"/> -->
+      <!-- <defineSlot>123213</defineSlot> -->
+      <!-- <experimental :title="title"></experimental> -->
+      <!-- <defineModel :modelValue="modelValue" @update:modelValue="handleModel"></defineModel> -->
+      <defineOptions></defineOptions>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
 import GenericCompVue from './components/GenericComp.vue'
 import defineEmit from './components/defineEmit.vue';
 import defineSlot from './components/defineSlot.vue';
+import experimental from './components/experimental.vue';
+import defineModel from './components/defineModel.vue';
+import defineOptions  from './components/defineOptions.vue';
+
+const countValue = ref(0)
+const title = ref('quy')
+const modelValue = ref('model')
 
 const clickFoo = (value: any) => {
   console.log(value)
@@ -20,7 +31,10 @@ const clickBar = (value: any) => {
   console.log(value)
 }
 const clickCount = (value: any) => {
-  value = value++
+  countValue.value = value
+}
+const handleModel = (value: any) => {
+  modelValue.value = value;
 }
 </script>
 
