@@ -16,10 +16,4 @@ import {toRef} from 'vue'
     toValue(ref(1)) //  --> 1
     toValue(() => 1) // --> 1
 
-    // before: allocating unnecessary intermediate refs
-    useFeature(computed(() => props.foo))
-    useFeature(toRef(props, 'foo'))
-
-    // after: more efficient and succinct
-    useFeature(() => props.foo)
 </script>
